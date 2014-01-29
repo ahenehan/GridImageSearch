@@ -126,31 +126,35 @@ public class SearchActivity extends Activity {
 	
 	public void onImageSearch(View v) {	
 		String query = etQuery.getText().toString();
-		Toast.makeText(this, "Searching for " + query, Toast.LENGTH_SHORT).show();
-		
-		AsyncHttpClient client = new AsyncHttpClient();
-		String getMe = "https://ajax.googleapis.com/ajax/services/search/images?rsz=8&" +
-				"start=" + 0 + "&v=1.0&q=" + Uri.encode(query);
-		if (searchParameters != null) {
-			getMe = appendSearchFilters(getMe);
-		}
-
-		Log.d("DEBUG", getMe);
-		client.get(getMe,
-				new JsonHttpResponseHandler() {
-					@Override
-					public void onSuccess(JSONObject response) {
-						JSONArray imageJsonResults = null;
-						try {
-							imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
-							imageResults.clear();
-							imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
-							Log.d("DEBUG", imageResults.toString());
-						} catch (JSONException e) {
-							e.printStackTrace();
+		if (!query.trim().equalsIgnoreCase("")) {
+			Toast.makeText(this, "Searching for " + query, Toast.LENGTH_SHORT).show();
+			
+			AsyncHttpClient client = new AsyncHttpClient();
+			String getMe = "https://ajax.googleapis.com/ajax/services/search/images?rsz=8&" +
+					"start=" + 0 + "&v=1.0&q=" + Uri.encode(query);
+			if (searchParameters != null) {
+				getMe = appendSearchFilters(getMe);
+			}
+	
+			Log.d("DEBUG", getMe);
+			client.get(getMe,
+					new JsonHttpResponseHandler() {
+						@Override
+						public void onSuccess(JSONObject response) {
+							JSONArray imageJsonResults = null;
+							try {
+								imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
+								imageResults.clear();
+								imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
+								Log.d("DEBUG", imageResults.toString());
+							} catch (JSONException e) {
+								e.printStackTrace();
+							}
 						}
-					}
-				});
+					});
+		} else {
+			Toast.makeText(this, "Cannot search for nothing", Toast.LENGTH_SHORT).show();
+		}
 	}
 	
 	public void onSettingsAction(MenuItem mi) {
