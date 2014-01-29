@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Advanced search options"
+        android:text="@string/settings_title"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -36,7 +36,7 @@
                 android:id="@+id/tvImageSize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Image Size"
+                android:text="@string/image_size"
                 android:textSize="20sp" />
 
             <Spinner
@@ -56,12 +56,12 @@
                 android:id="@+id/tvColorFilter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Color Filter"
+                android:text="@string/color_filter"
                 android:textSize="20sp" />
 
             <Spinner
                 android:id="@+id/spColorFilter"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:entries="@array/color_array" />
         </TableRow>
@@ -75,12 +75,12 @@
                 android:id="@+id/tvImageType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Image Type"
+                android:text="@string/image_type"
                 android:textSize="20sp" />
 
             <Spinner
                 android:id="@+id/spImageType"
-                android:layout_width="60dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:entries="@array/type_array" />
         </TableRow>
@@ -94,7 +94,7 @@
                 android:id="@+id/tvSiteFilter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Site Filter"
+                android:text="@string/site_filter"
                 android:textSize="20sp" />
 
             <EditText
@@ -114,7 +114,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:onClick="onSave"
-        android:text="Save"
+        android:text="@string/save"
         android:textSize="20sp" />
 
 </RelativeLayout>
